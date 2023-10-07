@@ -1,32 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import useCounter from './hooks/useCounter';
 
 function FirstApp() {
-
-  const [counter, setCounter] = useState(0)
-
-  const handleAdd = () => {
-    setCounter(counter + 1)
-  }
-  const handleSubstract = () => {
-    setCounter(counter - 1)
-  }
-  const handleReset = () => {
-    setCounter(0)
-  }
+  const { counter, performOperation } = useCounter();
 
   return (
     <>
-     <h1>Counter</h1>
-     <span>{counter}</span>
-     <button onClick={() => handleAdd()}>+1</button>
-     <button onClick={() => handleSubstract()}>-1</button>
-     <button onClick={() => handleReset()}>Reset</button>
-
+      <div>
+        <h1>Counter</h1>
+        <span>{counter}</span>
+        <button onClick={() => performOperation('Add')}>+1</button>
+        <button onClick={() => performOperation('Subtract')}>-1</button>
+        <button onClick={() => performOperation('Reset')}>Reset</button>
+      </div>
     </>
-  )
+  );
 }
 
-export default FirstApp
+export default FirstApp;
