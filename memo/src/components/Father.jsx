@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useCallback } from "react";
 import { Son } from "./Son";
+import "../App.css" 
 
 function Father() {
   const list = [2, 4, 6, 8, 10];
