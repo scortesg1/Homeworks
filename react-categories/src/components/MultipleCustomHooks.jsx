@@ -1,10 +1,11 @@
 import React from "react";
 import { useFetch } from "../hooks/useFetch";
+import useCounter from "../hooks/useCounter";
 
 function MultipleCustomHooks() {
-  const { counter, increment } = useCounter(1);
+  const { counter, increment } = useCounter();
   const { data, isLoading, hasError } = useFetch(
-    `https://breakingbadapi.com/api/quotes/${counter}`
+    `https://api.breakingbadquotes.xyz/v1/quotes/${counter}`
   );
 
   return (
