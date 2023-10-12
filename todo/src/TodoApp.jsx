@@ -1,19 +1,22 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import TodoAdd from "./components/TodoAdd";
 import TodoItem from "./components/TodoItem";
 import TodoList from "./components/TodoList";
 import TodoReducer  from "./components/TodoReducer";
 
-const initialState = [
-  {
-    id: new Date().getTime(),
-    description: "Hacer los challenges",
-    done: false,
-  },
-];
+const initialState = [];
+
+const init = () => {
+  return JSON.parse(localStorage.getItem("todos")) || [];
+};
 
 function TodoApp() {
-  const [todos, dispatch] = useReducer(TodoReducer, initialState);
+  const [todos, dispatch] = useReducer(TodoReducer, initialState,  init);
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
+  
 
   const handleNewTodo = (todo) => {
     const action = {
@@ -25,7 +28,7 @@ function TodoApp() {
 
   return (
     <>
-      <h1>TodoApp</h1>
+      <h1>TodoApp: 10, <small>pendientes: 2</small></h1>
       <hr />
 
       <div>
