@@ -18,6 +18,7 @@ function AddCategory({ onAddCategory }) {
   return (
     <form onSubmit={(event) => onSubmit(event)}>
       <input type="text" placeholder="Buscar" value={inputValue} onChange={(event) => onInputChange(event)}/>
+      <button type="submit">Send</button>
     </form>
   );
 }

@@ -5,9 +5,9 @@ import GifGrid from "./components/GifGrid"
 
 
 function GifExpertApp() {
-  const [categories, setCategories] = useState(["Zodiac"]);
+  const [categories, setCategories] = useState(["Violin"]);
 
-  const onAddCategory = (evt) => {
+  const onAddCategory = (category) => {
     setCategories(list => [...list, category])
   };
 
