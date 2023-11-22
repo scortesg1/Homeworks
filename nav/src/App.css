@@ -5,6 +5,29 @@
   text-align: center;
 }
 
+.active{
+  color: red;
+}
+
+ul{
+  list-style: none;
+  padding-left: 0;
+}
+
+nav{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+ul{
+  display: flex;
+  flex: row;
+  gap: 10em;
+  padding: 0 10em;
+  padding-bottom: 10em;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
