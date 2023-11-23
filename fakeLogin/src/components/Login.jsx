@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
   const { dispatch } = useContext(UserContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -12,8 +12,12 @@ function Login() {
     const formData = new FormData(event.target);
     const username = formData.get("username");
 
-    dispatch({ type: "LOGIN", payload: { username } });
-    navigate("/")
+    if (username.trim() !== "") {
+      dispatch({ type: "LOGIN", payload: { username } });
+      navigate("/");
+    } else{
+        alert("Campo de username vacio")
+    }
   };
 
   return (
