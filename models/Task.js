@@ -1,14 +1,30 @@
-const {Schema, model} = require("mongoose");
+const { Schema, model } = require("mongoose");
 
-const TaskScheme = Schema({
+const TaskScheme = Schema(
+  {
     title: {
-        type: String,
-        require: true
-    },    
-    user: {
-        type: Schema.Types.ObjectId,
-        ref: "Usuario"
+      type: String,
+      require: true,
     },
-})
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "Usuario",
+    },
+  },
+  {
+    toJSON: {
+      virtuals: true,
+    },
+    toObject: {
+      virtuals: true,
+    },
+  }
+);
 
-module.exports = model("Task", TaskScheme)
+TaskScheme.method("toJSON", function () {
+  const { __v, _id, ...object } = this.toObject();
+  object.id = _id;
+  return object;
+});
+
+module.exports = model("Task", TaskScheme);
